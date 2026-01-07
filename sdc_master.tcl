@@ -36,12 +36,14 @@ set_clock_uncertainty -rise_from c1 -fall_to c2 0.5
 
 ###clock_latency due to source latency
 set_clock_latency -source 0.2 [get_clocks clk]
+set_clock_latency -max 0.2 [get_clocks clk] #prects
+
 #network latency-applies to rise (for max and min condition) before cts only 
 set_clock_latency 0.3 -rise [get_clocks clk]
 set_clock_latency 0.3 -fall [get_clocks clk]
 
 ##propagated clock
-set_propagated_clock
+set_propagated_clock  0.2 [get_clocks clk] ##postcts
 
 
 #clock_groups defining
